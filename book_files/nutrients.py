@@ -6,12 +6,19 @@ import matplotlib.pyplot as plt
 import dzcnapy_plotlib as dzcnapy
 import csv
 
-with open("nutrients.csv") as infile:
+from pathlib import Path
+import os
+
+root_dir = str(Path().resolve())
+
+with open(f"{root_dir}/book_files/nutrients.csv") as infile:
     csv_reader = csv.reader(infile)
     G = nx.Graph(csv_reader)
 print(G.nodes())
 
-loops = list(G.selfloop_edges())
+
+
+loops = list(nx.selfloop_edges(G))
 G.remove_edges_from(loops)
 print(loops)
 
@@ -22,7 +29,7 @@ print(G.nodes())
 nutrients = set(("B12", "Zn", "D", "B6", "A", "Se", "Cu", "Folates",
                  "Ca", "Mn", "Thiamin", "Riboflavin", "C", "E", "Niacin"))
 nutrient_dict = {node: (node in nutrients) for node in G}
-nx.set_node_attributes(G, nutrient_dict, "nutrient")
+nx.set_node_attributes(G, nutrient_dict, 'nutrient')
 
 # Prepare for drawing
 colors = ["yellow" if n[1]["nutrient"] else "pink" for n in
@@ -52,3 +59,5 @@ pos = graphviz_layout(G)
 nx.draw_networkx(G, pos, **dzcnapy.attrs)
 dzcnapy.set_extent(pos, plot)
 dzcnapy.plot("nutrients-graphviz")
+
+plt.show()
