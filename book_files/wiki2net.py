@@ -48,7 +48,7 @@ while layer < 2:
 print("{} nodes, {} edges".format(len(F), nx.number_of_edges(F)))
 # 11597 nodes, 21331 edges
 
-F.remove_edges_from(F.selfloop_edges())
+F.remove_edges_from(nx.selfloop_edges(F))
 duplicates = [(node, node + "s") for node in F if node + "s" in F]
 for dup in duplicates:
     F = nx.contracted_nodes(F, *dup, self_loops=False)
