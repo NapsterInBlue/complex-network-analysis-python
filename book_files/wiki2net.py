@@ -15,7 +15,16 @@ STOPS = ("International Standard Serial Number",
          "Pubmed Identifier", "Pubmed Central",
          "Digital Object Identifier", "Arxiv",
          "Proc Natl Acad Sci Usa", "Bibcode",
-         "Library Of Congress Control Number", "Jstor")
+         "Library Of Congress Control Number", "Jstor",
+         "Doi (Identifier)", "Isbn (Identifier)",
+         "Pmid (Identifier)", "Arxiv (Identifier)",
+         "Bibcode (Identifier)", "Pmc (Identifier)",
+         "Issn (Identifier)", "S2Cid (Identifier)",
+         "Citeseerx (Identifier)", "Jstor (Identifier)",
+         "Hdl (Identifier)", "Oclc (Identifier)",
+         "Gnd (Identifier)", "Lccn (Identifier)",
+         "Ndl (Identifier)", "Mr (Identifier)"         
+        )
 
 todo_lst = [(0, SEED)] # The SEED is in the layer 0
 todo_set = set(SEED)   # The SEED itself
